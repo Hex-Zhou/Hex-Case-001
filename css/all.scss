@@ -1,0 +1,35 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.div1 {
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.table_div {
+    padding: 15px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+    table {
+        border: 1px solid black;
+
+        td {
+            border: 1px solid black;
+        }
+
+        th {
+
+            border: 1px solid black;
+
+        }
+
+    }
+}

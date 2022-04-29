@@ -1,0 +1,43 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.div1 {
+  padding-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.table_div {
+  padding: 15px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.table_div table {
+  border: 1px solid black;
+}
+
+.table_div table td {
+  border: 1px solid black;
+}
+
+.table_div table th {
+  border: 1px solid black;
+}
+/*# sourceMappingURL=all.css.map */
