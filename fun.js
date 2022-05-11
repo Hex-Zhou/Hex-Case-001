@@ -6,9 +6,14 @@ let GuestList = [];
 let formList = [];
 let area1 = document.getElementById("area1");
 let area2 = document.getElementById("area2");
+let table = document.getElementsByTagName("tbody")[0];
+let originTable = table.innerHTML;
 let a1_ok = false; //兩邊表格都有東西
 let a2_ok = false; //兩邊表格都有東西
 area1 === null || area1 === void 0 ? void 0 : area1.addEventListener("change", (e) => {
+    console.log(`正在測試...`);
+    GuestList = [];
+    table.innerHTML = originTable;
     let Array = [];
     let regex1 = new RegExp(/<i class="small">[0-9]*/g); //切編號
     let regex2 = new RegExp(/<\/i>.*?(<\/e>)/g); //切姓名
@@ -38,6 +43,8 @@ area1 === null || area1 === void 0 ? void 0 : area1.addEventListener("change", (
     }
 });
 area2 === null || area2 === void 0 ? void 0 : area2.addEventListener("change", (e) => {
+    formList = [];
+    table.innerHTML = originTable;
     let regex1 = new RegExp(/<td.*?>.*?<\/td>/g); //切<td></td>
     let Array = [];
     Array = [...area2.value.matchAll(formRegex)];
@@ -85,18 +92,22 @@ area2 === null || area2 === void 0 ? void 0 : area2.addEventListener("change", (
         combo();
     }
 });
-window.onload = function () {
-    alert("專為男同志設計的網站，歡迎使用街口支付贊助我");
-};
+window.onload = function () { };
 function combo() {
-    let table = document.getElementsByTagName("tbody")[0];
-    GuestList.forEach((e, i) => {
+    table.innerHTML = originTable;
+    let total = [0, 0, 0, 0, 0];
+    GuestList.forEach((e) => {
         for (var j = 1; j <= formList.length - 1; j++) {
             if (formList[j][0] == e.num) {
                 e.car = Number(formList[j][2]);
                 e.two = Number(formList[j][5]);
                 e.three = Number(formList[j][8]);
                 e.four = Number(formList[j][11]);
+                total[0] += e.pagenum;
+                total[1] += e.car;
+                total[2] += e.two;
+                total[3] += e.three;
+                total[4] += e.four;
                 let result = "<th>" +
                     e.num +
                     "</th>" +
@@ -122,4 +133,29 @@ function combo() {
             }
         }
     });
+    let tot = total.map((e) => {
+        return Number(e) == Number(e.toFixed(2)) ? e : e.toFixed(2);
+    });
+    let result = "<th>" +
+        "" +
+        "</th>" +
+        "<th>" +
+        "總計" +
+        "</th>" +
+        "<th>" +
+        tot[0] +
+        "</th>" +
+        "<th>" +
+        tot[1] +
+        "</th>" +
+        "<th>" +
+        tot[2] +
+        "</th>" +
+        "<th>" +
+        tot[3] +
+        "</th>" +
+        "<th>" +
+        tot[4] +
+        "</th>";
+    table.innerHTML = table.innerHTML + result;
 }
